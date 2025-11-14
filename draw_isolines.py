@@ -27,7 +27,7 @@ def dbm_to_S(dbm, r_min=-90, r_max=-40):
 
 # S = 1 / (1 + d^2) → 반지름 계산
 def S_to_radius(S):
-    return np.sqrt(1.0 / S - 1.0) * 2.5
+    return np.sqrt(1.0 / S - 1.0)
 
 
 # --- 그림 설정 ---
@@ -67,7 +67,7 @@ for idx, ap in enumerate(aps):
 
     for dbm, col in zip(thresholds_dbm, colors):
         S = dbm_to_S(dbm)
-        r = S_to_radius(S) * 2.2  # ← 원 크기 조정(2.2배 확대)
+        r = S_to_radius(S) * 4  # ← 원 크기 조정(4배 확대)
 
         theta = np.linspace(0, 2 * np.pi, 200)
         x_circle = ap[0] + r * np.cos(theta)
